@@ -11,8 +11,15 @@ const nextConfig = {
   trailingSlash: true,
   // ベースパス設定
   basePath: '',
-  // faviconなどの静的ファイルへのリクエストをCloudflare Pagesで適切に処理するための設定
-  assetPrefix: process.env.NODE_ENV === 'production' ? process.env.NEXT_PUBLIC_BASE_URL : '',
+  // ホスティング用の設定
+  webpack: (config) => {
+    return config;
+  },
+  // Cloudflareページのホスティング設定
+  experimental: {
+    optimizeCss: true,
+    forceSwcTransforms: true,
+  },
 }
 
 module.exports = nextConfig 
