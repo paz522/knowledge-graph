@@ -17,7 +17,12 @@ const nextConfig = {
   },
   // Cloudflareページのホスティング設定
   experimental: {
-    optimizeCss: true,
+    // 注: crittersがインストール済みである必要があります
+    optimizeCss: { 
+      inlineThreshold: 0,  // CSSをインライン化する閾値
+      minify: true,        // CSSを最小化
+      removeComments: true // コメントを削除
+    },
     forceSwcTransforms: true,
   },
 }
